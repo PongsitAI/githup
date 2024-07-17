@@ -397,6 +397,8 @@ section .content {
     margin: 20px;
 }
 
+
+
 .flex1 img {
     border-radius: 15px;
     transition: transform 0.5s ease;
@@ -408,6 +410,8 @@ section .content {
 
 
 
+
+
 #list1:checked ~ section .content-1,
 #list2:checked ~ section .content-2,
 #list3:checked ~ section .content-3,
@@ -416,3 +420,6 @@ section .content {
     display: block; /* แสดงเนื้อหาของ content ที่เกี่ยวข้องกับ radio ที่ถูกเลือก */
 }
 
+
+  
+ 
