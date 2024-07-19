@@ -4,6 +4,7 @@
     box-sizing: border-box;
 }
 
+
 .box{
     padding: 1rem;
     background-color: rgb(23, 60, 75);
@@ -179,10 +180,12 @@
     padding: 2rem;
     gap: 20px;
     justify-content: center;
-    
-    
+  
+   
    
 }
+
+
 
 .product-item {
     background-color: white;
@@ -191,6 +194,8 @@
     padding: 30px;
     text-align: center;
     width: 200px;
+    flex: 1 1 calc(20% - 40px); /* 5 columns */
+   
    
    
 }
@@ -199,10 +204,10 @@
 .product-item img {
     max-width: 100%;
     border-radius: 10px;
-    
-    
+   
     
 }
+
 
 .product-item h2 {
     font-size: 20px;
@@ -263,11 +268,16 @@ h1 {
 
 
 .product-grid {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    margin-top: 40px;
+ 
+    display: grid;
+   
+    grid-template-columns: repeat(5, 1fr); 
+    gap: 20px;
+ 
+    
 }
+
+
 
 .product-card {
     background-color: #fff;
@@ -281,6 +291,8 @@ h1 {
     transition: transform 0.2s;
     overflow: hidden;
     
+  
+   
     
 }
 
@@ -292,8 +304,7 @@ h1 {
     padding-bottom: 5x;
     margin-bottom: 5px;
     animation: pulse 3s infinite;
-    
-    
+  
 }
 @keyframes pulse {
     0% {
@@ -306,6 +317,8 @@ h1 {
         transform: scale(1);
     }
 }
+
+
 
 .product-card p {
     font-size: 1em;
@@ -390,29 +403,35 @@ section .content {
 .flex-gallery {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: space-between;
 }
 
 .flex1 {
     margin: 20px;
     box-sizing: border-box;
+    align-items: center;
 }
 
 
 
 .flex1 img {
     border-radius: 15px;
-    transition: transform 0.5s ease;
+    transition: transform 0.6s ease;
+ 
     
 }
 
- 
+/* การออกแบบที่ตอบสนองต่อหน้าจอขนาดใหญ่ */
+@media (min-width: 1200px) {
+    .flex1 {
+      flex: 1 1 25%;
+    }
+  }
+  
 
 .flex1 img:hover {
     transform: scale(1.10);
 }
-
-
 
 
 
@@ -425,5 +444,3 @@ section .content {
 }
 
 
-  
- 
