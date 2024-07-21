@@ -1,33 +1,80 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="th">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Button Link</title>
-    <style>
-        .add-to-cart {
-            padding: 10px 20px;
-            background-color: #007BFF;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        .add-to-cart:hover {
-            background-color: #0056b3;
-        }
-    </style>
+    <title>About Us</title>
+   
 </head>
-<body>
 
-<button class="add-to-cart" onclick="goToPage()">Click View</button>
+<style>
 
-<script>
-    function goToPage() {
-        window.location.href = ''; // Replace with the path to your HTML file
+
+
+.about-us {
+    padding: 2rem;
+    background-color: white;
+    animation: slideIn 1s ease-out;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(50px);
+        opacity: 0;
     }
-</script>
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
 
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin: 1rem;
+}
+
+.content {
+    max-width: 600px;
+    margin: 1rem;
+}
+
+.content h2 {
+    font-size: 2rem;
+    color: #333;
+}
+
+.content p {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #666;
+    margin-bottom: 1rem;
+}
+
+
+
+</style>
+<body>
+  
+    <div class="about-us">
+        <div class="container">
+            <img src="/icon/siamin.png" alt="Company Photo">
+            <div class="content">
+                <h2>ABOUT US</h2>
+                <p>บริษัท สยาม อินเตอร์เนชั่นแนล เมดิคอล อิควิปเม้นท์ จำกัด เป็นผู้นำเข้า จัดจำหน่าย และให้บริการด้านอุปกรณ์และเครื่องมือทางการแพทย์จากแบรนด์ชั้นนำทั่วโลกที่ผ่านการรับรองมาตรฐาน USFDA, CE Mark และ อย. เรายินดีให้บริการตั้งแต่การให้คำปรึกษาเบื้องต้นจนถึงการบริการหลังการขาย ปัจจุบันบริษัทฯได้รับความไว้วางใจจากลูกค้ามากกว่า 200 สถาบัน ทั้งสถานพยาบาล มหาวิทยาลัย หน่วยงานราชการ และองค์กรเอกชน และให้บริการมาอย่างต่อเนื่องเข้าสู่ปีที่ 11 เรายังมุ่งมั่นที่จะให้บริการและพัฒนาทั้งด้านบริการและผลิตภัณฑ์ต่อไป เพื่อให้ลูกค้าได้รับสินค้าและบริการที่มีคุณภาพ</p>
+            </div>
+        </div>
+    </div>
+    
 </body>
 </html>

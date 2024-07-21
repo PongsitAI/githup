@@ -3,143 +3,101 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Company Profile</title>
-
+  <title>Sticky Header Example</title>
+  
 </head>
 <style>
-
-
-/* Basic reset */
-* {
+    body {
   margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+.header {
+  position: fixed; /* ทำให้แถบอยู่คงที่ */
+  top: 0;
+  left: 0;
+  width: 100%; /* ให้แถบขยายเต็มความกว้างของหน้าจอ */
+  background-color: #333; /* สีพื้นหลังของแถบ */
+  color: white; /* สีของตัวอักษร */
+  padding: 10px 0;
+  z-index: 1000; /* ทำให้แถบอยู่เหนือเนื้อหาอื่น */
+}
+
+.logo a {
+  text-decoration: none;
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+  margin-left: 20px;
+}
+
+.menu ul {
+  list-style: none;
   padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-  font-family: 'Arial', sans-serif;
-  background: linear-gradient(to right, #f7f7f7, #e2e2e2);
-  color: #333;
-}
-
-.profile {
+  margin: 0;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 60px 20px;
 }
 
-.profile-container {
-  display: flex;
-  align-items: center;
-  background: #fff;
-  border-radius: 12px;
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
-  overflow: hidden;
-  max-width: 900px;
-  width: 100%;
-  transition: transform 0.3s, box-shadow 0.3s;
+.menu li {
+  margin: 0 15px;
 }
 
-.profile-container:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.2);
+.menu a {
+  text-decoration: none;
+  color: white;
+  font-size: 18px;
 }
 
-.profile-picture {
-  flex: 1;
-  padding: 20px;
-  text-align: center;
- 
+.menu a:hover {
+  text-decoration: underline;
 }
 
-.profile-picture img {
-  max-width: 250px;
-
-
-  transition: transform 0.3s, box-shadow 0.3s;
+main {
+  padding-top: 60px; /* เพิ่มระยะห่างด้านบนให้เพียงพอสำหรับแถบที่ติดอยู่ด้านบน */
 }
-
-.profile-picture img:hover {
-  transform: scale(1.1);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-}
-
-.profile-details {
-  flex: 2;
-  padding: 30px;
-}
-
-.profile-details h1 {
-  font-size: 2.5em;
-  color: #333;
-  margin-bottom: 10px;
-  font-weight: 700;
-}
-
-.profile-details .tagline {
-  font-size: 1.4em;
-  color: #555;
-  margin-bottom: 20px;
-  font-style: italic;
-}
-
-.profile-details .description {
-  font-size: 1.1em;
-  color: #666;
-  line-height: 1.8;
-  margin-bottom: 20px;
-}
-
-
 
 </style>
 <body>
-  <section class="profile">
-    <div class="profile-container">
-      <div class="profile-picture">
-        <img src="/gallery/COSMED/2.jpg" alt="Company Logo">
-      </div>
-      <div class="profile-details">
-        <h1>Company Name</h1>
-        <p class="tagline">Innovating the Future</p>
-        <p class="description">
-          Our company is dedicated to bringing innovative solutions to the market. With a team of experienced professionals, we strive to deliver the highest quality products and services to meet the needs of our clients.
-        </p>
-        
-      </div>
+  <header class="header">
+    <div class="logo">
+      <a href="#">SIME</a>
     </div>
-  </section>
-  <section class="profile">
-    <div class="profile-container">
-      <div class="profile-picture">
-        <img src="/gallery/COSMED/2.jpg" alt="Company Logo">
-      </div>
-      <div class="profile-details">
-        <h1>Company Name</h1>
-        <p class="tagline">Innovating the Future</p>
-        <p class="description">
-          Our company is dedicated to bringing innovative solutions to the market. With a team of experienced professionals, we strive to deliver the highest quality products and services to meet the needs of our clients.
-        </p>
-     
-      </div>
-    </div>
-  </section>
+    <nav class="menu">
+      <ul>
+        <li><a href="#">ABOUT US</a></li>
+        <li><a href="#">PRODUCT</a></li>
+        <li><a href="#">NEWS</a></li>
+        <li><a href="#">CONTACT US</a></li>
+      </ul>
+    </nav>
+  </header>
 
-  <section class="profile">
-    <div class="profile-container">
-      <div class="profile-picture">
-        <img src="/gallery/COSMED/2.jpg" alt="Company Logo">
-      </div>
-      <div class="profile-details">
-        <h1>Company Name</h1>
-        <p class="tagline">Innovating the Future</p>
-        <p class="description">
-          Our company is dedicated to bringing innovative solutions to the market. With a team of experienced professionals, we strive to deliver the highest quality products and services to meet the needs of our clients.
-        </p>
-       
-      </div>
+  <main>
+    <head>
+        <h1>Event Gallery</h1>
+    </head>
+    <div class="event-gallery">
+        <div class="event-item">
+            <img src="/gallery/CU/6.jpg" alt="Event 1">
+            <h2>Event 1</h2>
+            <p>Details about event 1    </p>
+            <p>Details about event 1    </p>
+        </div>
+        <div class="event-item">
+            <img src="/gallery/EVENT/11.jpg" alt="Event 2">
+            <h2>Event 2</h2>
+            <p>Details about event 2.</p>
+        </div>
+        <div class="event-item">
+            <img src="/gallery/pateint monitor/3.jpg" alt="Event 3">
+            <h2>Event 3</h2>
+            <p>Details about event 3.</p>
+        </div>
+        <!-- Add more event items as needed -->
     </div>
-  </section>
+    <!-- เพิ่มเนื้อหาเพิ่มเติมที่นี่ -->
+  </main>
+
+  
 </body>
 </html>
