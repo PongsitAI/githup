@@ -1,127 +1,180 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>บริการด้านการขาย</title>
-    
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interactive Dropdown Navigation</title>
+ 
 </head>
 
 <style>
-  body {
-    font-family: 'Arial', sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f4f4f9;
+    body {
+  font-family: Arial, sans-serif;
 }
 
-.services {
-    text-align: center;
-    padding: 50px 20px;
-    background: linear-gradient(to right, #ffecd2, #fcb69f);
-    color: #fff;
+.box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #333;
 }
 
-.services h1 {
-    font-size: 3em;
-    margin-bottom: 40px;
-    color: #fff;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+.logo a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 24px;
+  font-weight: bold;
 }
 
-.service-list {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 20px;
-    justify-content: center;
+.menu ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
 }
 
-.service-item {
-    background: #fff;
-    margin: 15px;
-    padding: 25px;
-    border-radius: 15px;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-    text-align: center;
-    position: relative;
+.menu li {
+  margin-left: 20px;
+  position: relative;
 }
 
-.service-item:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+.menu a {
+  color: #fff;
+  text-decoration: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  transition: background-color 0.3s, box-shadow 0.3s;
 }
 
-.service-item:nth-child(1) {
-    background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+.menu a:hover {
+  background-color: #555;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-.service-item:nth-child(2) {
-    background: linear-gradient(135deg, #a18cd1 0%, #fbc2eb 100%);
+.dropdown-btn::after {
+  content: '\25BC'; /* Unicode character for a down-pointing triangle */
+  margin-left: 5px;
+  font-size: 12px;
 }
 
-.service-item:nth-child(3) {
-    background: linear-gradient(135deg, #fbc2eb 0%, #a6c1ee 100%);
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #444;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: opacity 0.3s, transform 0.3s;
 }
 
-/* Add more gradients as needed for more items */
-
-.service-img {
-    width: 100%;
-    border-radius: 10px;
-    margin-bottom: 15px;
+.dropdown-menu.show {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
 }
 
-.service-item h2 {
-    font-size: 1.8em;
-    margin-bottom: 15px;
-    color: #333;
+.dropdown-menu li {
+  list-style: none;
 }
 
-.service-item p {
-    font-size: 1em;
-    color: #666;
+.dropdown-menu a {
+  color: white;
+  text-decoration: none;
+  display: block;
+  padding: 10px 20px;
+  transition: background-color 0.3s;
 }
 
-@media (max-width: 768px) {
-    .service-item {
-        flex: 1 1 calc(50% - 30px);
-        max-width: calc(50% - 30px);
-    }
+.dropdown-menu a:hover {
+  background-color: #555;
 }
 
-@media (max-width: 480px) {
-    .service-item {
-        flex: 1 1 100%;
-        max-width: 100%;
-    }
+.section {
+  padding: 50px 20px;
+  margin-top: 20px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s;
 }
 
+.section:hover {
+  transform: scale(1.02);
+}
 
+h2 {
+  margin-top: 0;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
 
 </style>
 <body>
-    <section class="services">
-        <h1>บริการด้านการขาย</h1>
-        <div class="service-list">
-            <div class="service-item">
-                <img src="/gallery/EVENT/22.jpg" alt="บริการที่ 1" class="service-img">
-                <h2>บริการที่ 1</h2>
-                <p>รายละเอียดเกี่ยวกับบริการที่ 1</p>
-            </div>
-            <div class="service-item">
-                <img src="/gallery/CU/3.jpg" alt="บริการที่ 2" class="service-img">
-                <h2>บริการที่ 2</h2>
-                <p>รายละเอียดเกี่ยวกับบริการที่ 2</p>
-            </div>
-            <div class="service-item">
-                <img src="/gallery/SHOW ALL/4.jpg" alt="บริการที่ 3" class="service-img">
-                <h2>บริการที่ 3</h2>
-                <p>รายละเอียดเกี่ยวกับบริการที่ 3</p>
-            </div>
+  <div class="box">
+    <div class="logo">
+      <a href="#">SIME</a>
+    </div>
+    <div class="menu">
+      <ul>
+        <li><a href="#about-us">ABOUT US</a></li>
+        <li class="dropdown">
+          <a href="#product" class="dropdown-btn">PRODUCT</a>
+          <ul class="dropdown-menu">
+            <li><a href="#product1">Product 1</a></li>
+            <li><a href="#product2">Product 2</a></li>
+            <li><a href="#product3">Product 3</a></li>
+            <li><a href="https://line.me/R/ti/p/@your_line_id" target="_blank">Contact via LINE</a></li>
+          </ul>
+        </li>
+        <li><a href="#news">NEWS</a></li>
+        <li><a href="#contact-us">CONTACT US</a></li>
+      </ul>
+    </div>
+  </div>
 
-            <!-- เพิ่มบริการอื่น ๆ ได้ตามต้องการ -->
-        </div>
-    </section>
+  <div id="about-us" class="section">
+    <h2>About Us</h2>
+    <!-- เนื้อหาส่วน About Us -->
+  </div>
+
+  <div id="product" class="section">
+    <h2>Product</h2>
+    <!-- เนื้อหาส่วน Product -->
+  </div>
+
+  <div id="product1" class="section">
+    <h2>Product 1</h2>
+    <!-- เนื้อหาส่วน Product 1 -->
+  </div>
+
+  <div id="product2" class="section">
+    <h2>Product 2</h2>
+    <!-- เนื้อหาส่วน Product 2 -->
+  </div>
+
+  <div id="product3" class="section">
+    <h2>Product 3</h2>
+    <!-- เนื้อหาส่วน Product 3 -->
+  </div>
+
+  <div id="news" class="section">
+    <h2>News</h2>
+    <!-- เนื้อหาส่วน News -->
+  </div>
+
+  <div id="contact-us" class="section">
+    <h2>Contact Us</h2>
+    <!-- เนื้อหาส่วน Contact Us -->
+  </div>
+
+  <script src="script.js"></script>
 </body>
 </html>

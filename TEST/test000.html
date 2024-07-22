@@ -1,115 +1,41 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Event Gallery</title>
-   
-</head>
-
 <style>
-    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
 
-body {
-    font-family: 'Poppins', sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f4f4f4;
+.scrolling-message {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  background-color: #ff6f61;
+  color: #ffffff;
+  padding: 10px 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  transition: transform 0.3s ease-in-out;
+  z-index: 1000;
 }
 
-head {
-    background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
-    color: #fff;
-    padding: 20px;
-    text-align: center;
+.message {
+  margin: 0;
+  font-size: 16px;
+  font-weight: bold;
 }
 
-head h1 {
-    margin: 0;
-    font-size: 2.5em;
-    font-weight: 600;
-}
-
-.event-gallery {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    padding: 20px;
-}
-
-.event-item {
-    background-color: #fff;
-    border: none;
-    border-radius: 10px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-    margin: 15px;
-    overflow: hidden;
-    width: 300px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.event-item:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
-}
-
-.event-item img {
-    width: 100%;
-    height: auto;
-    transition: transform 0.3s ease;
-}
-
-.event-item:hover img {
-    transform: scale(1.05);
-}
-
-.event-item h2 {
-    margin: 15px 0 10px;
-    padding: 0 15px;
-    font-size: 1.8em;
-    color: #333;
-    text-align: center;
-}
-
-.event-item p {
-    padding: 0 15px 15px;
-    font-size: 1em;
-    color: #555;
-    text-align: justify;
-    line-height: 1.6;
-}
-
-.event-item::before {
-    content: "";
-    display: block;
-    width: 100%;
-    height: 4px;
-    background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+/* Animation for the bouncing effect */
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-30px);
+  }
+  60% {
+    transform: translateY(-15px);
+  }
 }
 
 </style>
-<body>
-    <head>
-        <h1>Event Gallery</h1>
-    </head>
-    <div class="event-gallery">
-        <div class="event-item">
-            <img src="/gallery/CU/6.jpg" alt="Event 1">
-            <h2>Event 1</h2>
-            <p>Details about event 1    </p>
-            <p>Details about event 1    </p>
-        </div>
-        <div class="event-item">
-            <img src="/gallery/EVENT/11.jpg" alt="Event 2">
-            <h2>Event 2</h2>
-            <p>Details about event 2.</p>
-        </div>
-        <div class="event-item">
-            <img src="/gallery/pateint monitor/3.jpg" alt="Event 3">
-            <h2>Event 3</h2>
-            <p>Details about event 3.</p>
-        </div>
-        <!-- Add more event items as needed -->
-    </div>
-</body>
-</html>
+
+<div class="scrolling-message">
+    <p class="message">ข้อความนี้จะกระโดดเมื่อคุณเลื่อน!</p>
+  </div>
+  
+  <script src="test00.js"></script>

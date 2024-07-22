@@ -1,103 +1,131 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sticky Header Example</title>
-  
-</head>
+
 <style>
-    body {
-  margin: 0;
-  font-family: Arial, sans-serif;
+
+.contact-widget {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.header {
-  position: fixed; /* ทำให้แถบอยู่คงที่ */
-  top: 0;
-  left: 0;
-  width: 100%; /* ให้แถบขยายเต็มความกว้างของหน้าจอ */
-  background-color: #333; /* สีพื้นหลังของแถบ */
-  color: white; /* สีของตัวอักษร */
-  padding: 10px 0;
-  z-index: 1000; /* ทำให้แถบอยู่เหนือเนื้อหาอื่น */
-}
-
-.logo a {
-  text-decoration: none;
-  color: white;
-  font-size: 24px;
+.contact-button {
+  background-color: #277e24;
+  color: #ffffff;
+  border: none;
+  border-radius: 25px;
+  padding: 20px 30px;
+  cursor: pointer;
+  font-size: 14px;
   font-weight: bold;
-  margin-left: 20px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: background-color 0.3s, transform 0.3s;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+
 }
 
-.menu ul {
+
+.contact-widget.bounce {
+  animation: bounce 1s;
+}
+
+.contact-button:hover {
+  background-color: #062e46;
+  transform: scale(1.1);
+}
+
+.button-text {
+  display: inline;
+}
+
+
+
+.contact-content {
+  display: none; /* Initially hidden */
+  background: linear-gradient(to bottom, #122f4e, #47c28f); 
+  border-radius: 20px;
+  padding: 15px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  width: 300px;
+  position: absolute;
+  bottom: 70px;
+  right: 0;
+  z-index: 1001;
+ 
+}
+
+
+
+.contact-info {
+  text-align: center;
+}
+
+.agent-image {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  margin-bottom: 10px;
+}
+
+.contact-info .greeting {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 5px 0;
+  color: white;
+}
+
+.contact-list {
   list-style: none;
   padding: 0;
   margin: 0;
-  display: flex;
 }
 
-.menu li {
-  margin: 0 15px;
+.contact-list li {
+  margin: 8px 0;
 }
 
-.menu a {
-  text-decoration: none;
+.contact-link {
   color: white;
-  font-size: 18px;
+  text-decoration: none;
+  font-weight: normal;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
-.menu a:hover {
-  text-decoration: underline;
+.contact-link i {
+  font-size: 16px;
 }
 
-main {
-  padding-top: 60px; /* เพิ่มระยะห่างด้านบนให้เพียงพอสำหรับแถบที่ติดอยู่ด้านบน */
+.contact-link:hover {
+  color: #ff6f61;
 }
 
 </style>
-<body>
-  <header class="header">
-    <div class="logo">
-      <a href="#">SIME</a>
-    </div>
-    <nav class="menu">
-      <ul>
-        <li><a href="#">ABOUT US</a></li>
-        <li><a href="#">PRODUCT</a></li>
-        <li><a href="#">NEWS</a></li>
-        <li><a href="#">CONTACT US</a></li>
-      </ul>
-    </nav>
-  </header>
 
-  <main>
-    <head>
-        <h1>Event Gallery</h1>
-    </head>
-    <div class="event-gallery">
-        <div class="event-item">
-            <img src="/gallery/CU/6.jpg" alt="Event 1">
-            <h2>Event 1</h2>
-            <p>Details about event 1    </p>
-            <p>Details about event 1    </p>
-        </div>
-        <div class="event-item">
-            <img src="/gallery/EVENT/11.jpg" alt="Event 2">
-            <h2>Event 2</h2>
-            <p>Details about event 2.</p>
-        </div>
-        <div class="event-item">
-            <img src="/gallery/pateint monitor/3.jpg" alt="Event 3">
-            <h2>Event 3</h2>
-            <p>Details about event 3.</p>
-        </div>
-        <!-- Add more event items as needed -->
+<div class="contact-widget">
+    <button class="contact-button" onclick="toggleContactInfo()">
+      <i class="fas fa-comments"></i>
+      <span class="button-text">ติดต่อเรา</span>
+    </button>
+    <div class="contact-content">
+      <img src="/icon/3903-UJQbxFbgEGeR2bvDkonO3l2UtdTTWzJLoXIfgQTi.png" alt="Call Center Agent" class="agent-image">
+      <div class="contact-info">
+        <p class="greeting">เราพร้อมช่วยเหลือคุณ!</p>
+        <ul class="contact-list">
+          <li><a href="tel:+1234567890" class="contact-link"><i class="fas fa-phone-alt"></i> โทรศัพท์</a></li>
+          <li><a href="mailto:contact@example.com" class="contact-link"><i class="fas fa-envelope"></i> อีเมล</a></li>
+          <li><a href="https://line.me/ti/p/@your-line-id" class="contact-link"><i class="fab fa-line"></i> Line</a></li>
+        </ul>
+      </div>
     </div>
-    <!-- เพิ่มเนื้อหาเพิ่มเติมที่นี่ -->
-  </main>
-
+  </div>
   
-</body>
-</html>
+  <!-- FontAwesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <script src="test.js"></script>

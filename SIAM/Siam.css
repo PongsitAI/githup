@@ -7,7 +7,7 @@
 
 .box{
    
-    background: linear-gradient(to bottom,  #163956, #0e2238); 
+    background: linear-gradient(to bottom,  #4d74a7, #ffffffc2); 
     position: fixed; /* ทำให้แถบอยู่คงที่ */  
     z-index: 1000; /* ทำให้แถบอยู่เหนือเนื้อหาอื่น */ 
     width: 100%; /* ให้แถบขยายเต็มความกว้างของหน้าจอ */                      
@@ -16,8 +16,9 @@
 .logo{
     display: flex;
     justify-content: space-between;
-    padding: 0 3rem;
-    border-radius: 100px;
+    padding: 0 4rem;
+  
+   
     
             
                     
@@ -27,9 +28,8 @@
    align-items: center;
    display: flex;
    text-decoration: none;
-   color: white;
    font-family: Arial, Helvetica, sans-serif
- 
+   
    
    
                                 
@@ -79,16 +79,25 @@
    padding: 0 1rem;
    text-decoration: none;
    display:flex;
-   color:white;
+   color: #ffffff;
    font-family: Arial, Helvetica, sans-serif;
-   
+   font-size: 20px;
+   text-shadow: 2px 2px 4px rgb(7, 1, 1);
    
   
    transition: background-color 0.3s ease;
    
    animation: slideIn 2s ease-out, fadeInOut 0s infinite;   
+
+   border-radius: 100px;
+ 
   
 }
+
+.menu a:hover {
+    background-color: #2b87a3;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.329);
+  }
 
 
 
@@ -773,4 +782,117 @@ body {
     font-size: 15px;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
+  
+
+
+.contact-widget {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+  }
+  
+
+  
+
+  
+  .contact-button {
+    background-color: #277e24;
+    color: #ffffff;
+    border: none;
+    border-radius: 25px;
+    padding: 20px 30px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: background-color 0.3s, transform 0.3s;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    
+  
+  }
+  
+
+  .contact-widget.bounce {
+    animation: bounce 1s;
+  }
+  
+  .contact-button:hover {
+    background-color: #062e46;
+    transform: scale(1.1);
+  }
+  
+  .button-text {
+    display: inline;
+  }
+  
+  
+  
+  .contact-content {
+    display: none; /* Initially hidden */
+    background: linear-gradient(to bottom, #122f4e, #47c28f); 
+    border-radius: 20px;
+    padding: 15px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    width: 300px;
+    position: absolute;
+    bottom: 70px;
+    right: 0;
+    z-index: 1001;
+   
+  }
+  
+  
+  
+  .contact-info {
+    text-align: center;
+  }
+  
+  .agent-image {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    margin-bottom: 10px;
+  }
+  
+  .contact-info .greeting {
+    font-size: 16px;
+    font-weight: bold;
+    margin: 5px 0;
+    color: white;
+  }
+  
+  .contact-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .contact-list li {
+    margin: 8px 0;
+  }
+  
+  .contact-link {
+    color: white;
+    text-decoration: none;
+    font-weight: normal;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  
+  .contact-link i {
+    font-size: 16px;
+  }
+  
+  .contact-link:hover {
+    color: #ff6f61;
+  }
   
