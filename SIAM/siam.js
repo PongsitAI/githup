@@ -11,3 +11,18 @@ function toggleContactInfo() {
 }
 
 
+ // เมื่อหน้าโหลดเสร็จ
+ window.addEventListener('load', function() {
+  // ดึงพารามิเตอร์จาก URL
+  const params = new URLSearchParams(window.location.search);
+  const scrollTo = params.get('scrollTo');
+
+  if (scrollTo) {
+    // หาองค์ประกอบที่มี id ตามพารามิเตอร์
+    const element = document.getElementById(scrollTo);
+    if (element) {
+      // เลื่อนหน้าไปยังองค์ประกอบ
+      element.scrollIntoView({ behavior: 'auto' });
+    }
+  }
+});
