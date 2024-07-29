@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>เว็บไซต์โต้ตอบพร้อมเงื่อนไขการใช้งาน</title>
+    <style>
+        button {
+            background-color: #008CBA;
+            color: white;
+            border: none;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 10px 0;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        button:hover {
+            background-color: #005f73;
+            transform: scale(1.05);
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .modal-content {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            animation: slideDown 0.5s ease-out;
+            max-width: 500px;
+            width: 90%;
+            margin-bottom: 100px; /* Add margin to prevent overlapping with bottom content */
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        h2 {
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+
+        p {
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 18px;
+        }
+
+        .modal button {
+            padding: 10px 20px;
+            font-size: 18px;
+            margin: 10px 5px;
+        }
+
+        .modal button:hover {
+            background-color: #0077a1;
+        }
+
+        /* Cookie Consent Styles */
+        .cookie-consent {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            color: white;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 999; /* Lower than modal */
+        }
+
+        .cookie-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .cookie-container p {
+            margin: 0;
+            padding-right: 20px;
+            flex: 1;
+        }
+
+        .cookie-buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .cookie-button {
+            padding: 10px 20px;
+            border: none;
+            background-color: #008CBA;
+            color: white;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .cookie-button:hover {
+            background-color: #005f73;
+            transform: scale(1.05);
+        }
+
+        .cookie-button.decline {
+            background-color: #e74c3c;
+        }
+
+        .cookie-button.decline:hover {
+            background-color: #c0392b;
+        }
+    </style>
+</head>
+<body>
+    <!-- Modal -->
+    <div id="termsModal" class="modal">
+        <div class="modal-content">
+            <h2>เงื่อนไขการใช้งาน</h2>
+            <p>ยินดีต้อนรับ! เพื่อให้คุณได้รับประสบการณ์การใช้งานที่ดีที่สุด กรุณายอมรับเงื่อนไขการใช้งานก่อนดำเนินการต่อ</p>
+            <button id="acceptButton">ยอมรับ</button>
+        </div>
+    </div>
+
+    <!-- Cookie consent bar -->
+    <div id="cookieConsent" class="cookie-consent">
+        <div class="cookie-container">
+            <p data-lang-en="We use cookies to improve your experience on our site. By continuing to browse, you accept our use of cookies. For more details, you can read our <a href='privacy-policy.html' target='_blank'>Privacy Policy</a>."
+               data-lang-th="เราใช้คุกกี้เพื่อพัฒนาประสบการณ์ของคุณบนเว็บไซต์ของเรา โดยการใช้งานเว็บไซต์นี้ต่อไป คุณยอมรับการใช้คุกกี้ของเรา สำหรับรายละเอียดเพิ่มเติม คุณสามารถอ่าน <a href='privacy-policy.html' target='_blank'>นโยบายความเป็นส่วนตัว</a> ของเรา">เราใช้คุกกี้เพื่อพัฒนาประสบการณ์ของคุณบนเว็บไซต์ของเรา โดยการใช้งานเว็บไซต์นี้ต่อไป คุณยอมรับการใช้คุกกี้ของเรา สำหรับรายละเอียดเพิ่มเติม คุณสามารถอ่าน <a href='privacy-policy.html' target='_blank'>นโยบายความเป็นส่วนตัว</a> ของเรา</p>
+            <div class="cookie-buttons">
+                <button id="acceptCookies" class="cookie-button accept" data-lang-en="Accept" data-lang-th="ยอมรับ">ยอมรับ</button>
+                <button id="declineCookies" class="cookie-button decline" data-lang-en="Decline" data-lang-th="ปฏิเสธ">ปฏิเสธ</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const termsModal = document.getElementById('termsModal');
+            const acceptButton = document.getElementById('acceptButton');
+            const cookieConsent = document.getElementById('cookieConsent');
+            const acceptCookies = document.getElementById('acceptCookies');
+            const declineCookies = document.getElementById('declineCookies');
+
+            // Show modal if not previously accepted
+            if (!localStorage.getItem('termsAccepted')) {
+                termsModal.style.display = 'flex';
+            }
+
+            // Handle accept button click
+            acceptButton.addEventListener('click', function() {
+                localStorage.setItem('termsAccepted', 'true');
+                termsModal.style.display = 'none';
+            });
+
+            // Show cookie consent if not previously accepted/declined
+            if (!localStorage.getItem('cookiesAccepted')) {
+                cookieConsent.style.display = 'flex';
+            }
+
+            // Handle accept cookies button click
+            acceptCookies.addEventListener('click', function() {
+                localStorage.setItem('cookiesAccepted', 'true');
+                cookieConsent.style.display = 'none';
+            });
+
+            // Handle decline cookies button click
+            declineCookies.addEventListener('click', function() {
+                localStorage.setItem('cookiesAccepted', 'false');
+                cookieConsent.style.display = 'none';
+            });
+        });
+    </script>
+</body>
+</html>
