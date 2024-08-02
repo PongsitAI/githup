@@ -1,13 +1,32 @@
 function toggleContactInfo() {
-  const info = document.querySelector('.contact-content');
-  const button = document.querySelector('.contact-button');
-  if (info.style.display === 'none' || info.style.display === '') {
-    info.style.display = 'block';
-    button.innerHTML = '<i class="fas fa-times"></i><span class="button-text">ปิด</span>';
+  const contactWidget = document.querySelector('.contact-widget');
+  const contactContent = document.querySelector('.contact-content');
+  contactWidget.classList.toggle('show');
+  if (contactWidget.classList.contains('show')) {
+    contactContent.style.display = 'block';
   } else {
-    info.style.display = 'none';
-    button.innerHTML = '<i class="fas fa-comments"></i><span class="button-text">ติดต่อเรา</span>';
+    contactContent.style.display = 'none';
   }
+}
+
+function showPhoneNumbers(element) {
+  const phoneNumbers = element.querySelector('.phone-numbers');
+  phoneNumbers.style.display = phoneNumbers.style.display === 'block' ? 'none' : 'block';
+  
+  // Hide other phone numbers
+  document.querySelectorAll('.phone-numbers').forEach(numbers => {
+    if (numbers !== phoneNumbers) numbers.style.display = 'none';
+  });
+}
+
+function highlight(element) {
+  element.style.backgroundColor = '#004d40'; // Color change on hover
+  element.style.color = '#ffffff'; // Text color change on hover
+}
+
+function resetHighlight(element) {
+  element.style.backgroundColor = 'transparent'; // Reset background color
+  element.style.color = '#ffffff'; // Reset text color
 }
 
 
