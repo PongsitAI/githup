@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+   
+</head>
+
+<style>
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.login-container {
+    background: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+}
+
+button {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #218838;
+}
+
+</style>
+<body>
+    <div class="login-container">
+        <h2>Login</h2>
+        <form action="/login" method="post">
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" required>
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" required>
+            <button type="submit">Login</button>
+        </form>
+    </div>
+
+    <script>
+
+const express = require('express');
+const bodyParser = require('body-parser');
+const bcrypt = require('bcrypt');
+const session = require('express-session');
+const app = express();
+
+// Middleware
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(session({
+    secret: 'your_secret_key',
+    resave: false,
+    saveUninitialized: true
+}));
+
+// Dummy user data
+const users = {
+    'employee1': '$2b$10$HGeJ2n0rM6b8Q2WItcqKNOWZfU3DFY.FWyH8KiQnXzJm2dRdP0Wtu' // password: 'password123'
+};
+
+// Serve login page
+app.get('/login', (req, res) => {
+    res.sendFile(__dirname + '/login.html');
+});
+
+// Handle login
+app.post('/login', (req, res) => {
+    const { username, password } = req.body;
+    const hashedPassword = users[username];
+    if (hashedPassword && bcrypt.compareSync(password, hashedPassword)) {
+        req.session.username = username;
+        res.redirect('/dashboard');
+    } else {
+        res.redirect('/login');
+    }
+});
+
+// Serve dashboard
+app.get('/dashboard', (req, res) => {
+    if (req.session.username) {
+        res.send('Welcome to the dashboard! <a href="/files">Go to files</a>');
+    } else {
+        res.redirect('/login');
+    }
+});
+
+// Serve files (for demonstration purposes)
+app.get('/files', (req, res) => {
+    if (req.session.username) {
+        res.send('Here are your files.');
+    } else {
+        res.redirect('/login');
+    }
+});
+
+app.listen(3000, () => {
+    console.log('Server is running on http://localhost:3000');
+});
+
+    </script>
+</body>
+</html>
