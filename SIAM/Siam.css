@@ -918,7 +918,8 @@ body {
     color: #ffffff;
     padding: 10px;
     border-radius: 8px;
-    font-size: 14px;
+    font-size: 13px;
+    font-family: "IBM Plex Sans Thai", sans-serif;
     white-space: nowrap;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     opacity: 0;
@@ -932,6 +933,8 @@ body {
     transform: translateY(-50%) translateX(0);
     background: #ff7043; /* Slightly darker shade on hover */
   }
+
+
 
 
 
