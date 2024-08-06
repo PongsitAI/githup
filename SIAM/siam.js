@@ -66,6 +66,9 @@ document.addEventListener('DOMContentLoaded', function() {
   acceptButton.addEventListener('click', function() {
     localStorage.setItem('termsAccepted', 'true');
     termsModal.style.display = 'none';
+
+    // เมื่อยอมรับข้อตกลง ส่งข้อมูลไปยังเซิร์ฟเวอร์
+    sendTermsAcceptance('true');
   });
 
   // แสดง cookie consent bar ถ้าผู้ใช้ยังไม่ได้ยอมรับหรือปฏิเสธคุกกี้
@@ -79,15 +82,66 @@ document.addEventListener('DOMContentLoaded', function() {
   acceptCookies.addEventListener('click', function() {
     localStorage.setItem('cookiesAccepted', 'true');
     cookieConsent.style.display = 'none';
+
+    // เมื่อยอมรับคุกกี้ ส่งข้อมูลไปยังเซิร์ฟเวอร์
+    sendCookieConsent('true');
   });
 
   // จัดการการคลิกปุ่มปฏิเสธคุกกี้
   declineCookies.addEventListener('click', function() {
     localStorage.setItem('cookiesAccepted', 'false');
     cookieConsent.style.display = 'none';
-  });
-});
 
+    // เมื่อปฏิเสธคุกกี้ ส่งข้อมูลไปยังเซิร์ฟเวอร์
+    sendCookieConsent('false');
+  });
+
+  // ฟังก์ชันส่งข้อมูลการยอมรับข้อตกลงไปยังเซิร์ฟเวอร์
+  function sendTermsAcceptance(accepted) {
+    fetch('/api/terms-acceptance', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ accepted: accepted }),
+    })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      return response.json();
+    })
+    .then(data => {
+      console.log('Terms acceptance status sent to server:', data);
+    })
+    .catch(error => {
+      console.error('Error sending terms acceptance status to server:', error);
+    });
+  }
+
+  // ฟังก์ชันส่งข้อมูลการยอมรับคุกกี้ไปยังเซิร์ฟเวอร์
+  function sendCookieConsent(accepted) {
+    fetch('/api/cookie-consent', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ accepted: accepted }),
+    })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      return response.json();
+    })
+    .then(data => {
+      console.log('Cookie consent status sent to server:', data);
+    })
+    .catch(error => {
+      console.error('Error sending cookie consent status to server:', error);
+    });
+  }
+});
 
 
 
