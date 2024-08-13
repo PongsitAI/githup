@@ -57,91 +57,90 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // แสดง modal ถ้าผู้ใช้ยังไม่ได้กดยอมรับ
   if (!localStorage.getItem('termsAccepted')) {
-    termsModal.style.display = 'flex';
+      termsModal.style.display = 'flex';
   } else {
-    termsModal.style.display = 'none'; // ซ่อน modal ถ้าผู้ใช้กดยอมรับแล้ว
+      termsModal.style.display = 'none'; // ซ่อน modal ถ้าผู้ใช้กดยอมรับแล้ว
   }
 
   // จัดการการคลิกปุ่มยอมรับของ modal
   acceptButton.addEventListener('click', function() {
-    localStorage.setItem('termsAccepted', 'true');
-    termsModal.style.display = 'none';
+      localStorage.setItem('termsAccepted', 'true');
+      termsModal.style.display = 'none';
 
-    // เมื่อยอมรับข้อตกลง ส่งข้อมูลไปยังเซิร์ฟเวอร์
-    sendTermsAcceptance('true');
+      // เมื่อยอมรับข้อตกลง ส่งข้อมูลไปยังเซิร์ฟเวอร์
+      sendTermsAcceptance('true');
   });
 
   // แสดง cookie consent bar ถ้าผู้ใช้ยังไม่ได้ยอมรับหรือปฏิเสธคุกกี้
   if (!localStorage.getItem('cookiesAccepted')) {
-    cookieConsent.style.display = 'flex';
+      cookieConsent.style.display = 'flex';
   } else {
-    cookieConsent.style.display = 'none'; // ซ่อน cookie consent bar ถ้าผู้ใช้ยอมรับหรือปฏิเสธแล้ว
+      cookieConsent.style.display = 'none'; // ซ่อน cookie consent bar ถ้าผู้ใช้ยอมรับหรือปฏิเสธแล้ว
   }
 
   // จัดการการคลิกปุ่มยอมรับคุกกี้
   acceptCookies.addEventListener('click', function() {
-    localStorage.setItem('cookiesAccepted', 'true');
-    cookieConsent.style.display = 'none';
+      localStorage.setItem('cookiesAccepted', 'true');
+      cookieConsent.style.display = 'none';
 
-    // เมื่อยอมรับคุกกี้ ส่งข้อมูลไปยังเซิร์ฟเวอร์
-    sendCookieConsent('true');
+      // เมื่อยอมรับคุกกี้ ส่งข้อมูลไปยังเซิร์ฟเวอร์
+      sendCookieConsent('true');
   });
 
   // จัดการการคลิกปุ่มปฏิเสธคุกกี้
   declineCookies.addEventListener('click', function() {
-    localStorage.setItem('cookiesAccepted', 'false');
-    cookieConsent.style.display = 'none';
+      localStorage.setItem('cookiesAccepted', 'false');
+      cookieConsent.style.display = 'none';
 
-    // เมื่อปฏิเสธคุกกี้ ส่งข้อมูลไปยังเซิร์ฟเวอร์
-    sendCookieConsent('false');
+      // เมื่อปฏิเสธคุกกี้ ส่งข้อมูลไปยังเซิร์ฟเวอร์
+      sendCookieConsent('false');
   });
 
   // ฟังก์ชันส่งข้อมูลการยอมรับข้อตกลงไปยังเซิร์ฟเวอร์
   function sendTermsAcceptance(accepted) {
-    fetch('/api/terms-acceptance', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ accepted: accepted }),
-    })
-    .then(response => {
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
-      }
-      return response.json();
-    })
-    .then(data => {
-      console.log('Terms acceptance status sent to server:', data);
-    })
-    .catch(error => {
-      console.error('Error sending terms acceptance status to server:', error);
-    });
+      fetch('/api/terms-acceptance', {
+          method: 'POST',
+          headers: {
+              'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ accepted: accepted }),
+      })
+      .then(response => {
+          if (!response.ok) {
+              throw new Error('Network response was not ok');
+          }
+          return response.json();
+      })
+      .then(data => {
+          console.log('Terms acceptance status sent to server:', data);
+      })
+      .catch(error => {
+          console.error('Error sending terms acceptance status to server:', error);
+      });
   }
 
   // ฟังก์ชันส่งข้อมูลการยอมรับคุกกี้ไปยังเซิร์ฟเวอร์
   function sendCookieConsent(accepted) {
-    fetch('/api/cookie-consent', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ accepted: accepted }),
-    })
-    .then(response => {
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
-      }
-      return response.json();
-    })
-    .then(data => {
-      console.log('Cookie consent status sent to server:', data);
-    })
-    .catch(error => {
-      console.error('Error sending cookie consent status to server:', error);
-    });
+      fetch('/api/cookie-consent', {
+          method: 'POST',
+          headers: {
+              'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ accepted: accepted }),
+      })
+      .then(response => {
+          if (!response.ok) {
+              throw new Error('Network response was not ok');
+          }
+          return response.json();
+      })
+      .then(data => {
+          console.log('Cookie consent status sent to server:', data);
+      })
+      .catch(error => {
+          console.error('Error sending cookie consent status to server:', error);
+      });
   }
 });
-
 
 
